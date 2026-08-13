@@ -23,7 +23,7 @@ if is_local:
 
     table_env.get_config().get_configuration().set_string(
         "pipeline.jars",
-        f"file:///Users/shashankmishra/Desktop/pyflink-dependencies.jar"
+        f"file://{CURRENT_DIR}/pyflink-dependencies.jar"
     )
 
 
