@@ -20,10 +20,6 @@ if is_local:
 
     APPLICATION_PROPERTIES_FILE_PATH = "application_properties.json"
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
-    # table_env.get_config().get_configuration().set_string(
-    #     "pipeline.jars",
-    #     f"file://{CURRENT_DIR}/pyflink-dependencies.jar"
-    # )
 
     table_env.get_config().get_configuration().set_string(
         "pipeline.jars",
@@ -122,26 +118,6 @@ def main():
             'json.timestamp-format.standard' = 'ISO-8601'
         )
     """)
-
-    # Uncomment this part to register table in flink
-    # to print data on console
-    # table_env.execute_sql("""
-    #     CREATE TABLE joined_output (
-    #             ad_id STRING,
-    #             impression_id STRING,
-    #             campaign_id STRING,
-    #             publisher_id STRING,
-    #             impression_time TIMESTAMP(3),
-    #             click_time TIMESTAMP(3),
-    #             geo_location STRING,
-    #             platform STRING,
-    #             device_type STRING,
-    #             bid_price DOUBLE,
-    #             click_price DOUBLE
-    #           )
-    #           WITH (
-    #             'connector' = 'print'
-    #           )""")
 
     # Perform the time-bounded join and write to output
     table_result = table_env.execute_sql("""
